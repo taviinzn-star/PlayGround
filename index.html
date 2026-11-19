@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101513">
+  <title>Cinzas de Valdora — RPG de sobrevivência</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Cinzas de Valdora"><span class="brand-mark">✦</span><span><b>CINZAS DE VALDORA</b><small>CRÔNICAS DA FRONTEIRA</small></span></a>
+      <div class="world-meta"><span class="live-dot"></span><span id="zone-label">FLORESTA DE UMBRÁLIA</span><i></i><span id="day-label">DIA 1 · 21:40</span></div>
+      <div class="top-actions"><button id="save-btn" class="quiet-button" title="Salvar">⌑ <span data-i18n="save">Salvar</span></button><button id="sound-btn" class="icon-button" title="Som">♫</button><select id="language" aria-label="Idioma"><option value="pt">PT</option><option value="en">EN</option><option value="es">ES</option></select></div>
+    </header>
+    <section class="game-layout">
+      <div class="play-column">
+        <section class="scene-card">
+          <div class="scene-topline"><div class="location"><span class="location-icon">⌖</span><span><small data-i18n="location">LOCALIZAÇÃO</small><b id="location-name">Bosque dos Sussurros</b></span></div><div class="weather"><span>☾</span> <span data-i18n="weather">NOITE · NEBLINA</span></div></div>
+          <div class="canvas-wrap"><canvas id="game" width="960" height="500" aria-label="Mundo de jogo lateral"></canvas><div class="scene-vignette"></div><div class="toast" id="toast" aria-live="polite"></div><div class="zone-banner" id="zone-banner"><span>✦</span><b>FLORESTA DE UMBRÁLIA</b></div><div class="interact-prompt" id="interact-prompt"></div><div class="scene-bottom"><span><i class="keycap">A</i><i class="keycap">D</i> <span data-i18n="move">MOVER</span></span><span><i class="keycap">ESPAÇO</i> <span data-i18n="jump">SALTAR</span></span><span><i class="keycap">J</i> <span data-i18n="attack">ATACAR</span></span><span><i class="keycap">E</i> <span data-i18n="interact">INTERAGIR</span></span></div></div>
+          <div class="status-row"><div class="vitals"><div class="vital"><span>♥</span><div class="meter"><div class="meter-fill health-fill" id="health-fill"></div></div><b id="health-text">100 / 100</b></div><div class="vital stamina-vital"><span>ϟ</span><div class="meter"><div class="meter-fill stamina-fill" id="stamina-fill"></div></div><b id="stamina-text">100 / 100</b></div></div><div class="hero-level"><span class="level-badge" id="level-badge">1</span><div><b id="hero-name">Errante</b><small><span data-i18n="level">NÍVEL</span> <span id="level-number">1</span> · <span id="xp-label">0 / 100 XP</span></small><div class="xp-track"><i id="xp-fill"></i></div></div></div><div class="coins"><span class="coin-icon">◉</span><b id="coin-count">24</b><small data-i18n="coins">MOEDAS</small></div></div>
+        </section>
+        <section class="lower-grid">
+          <article class="panel quest-panel"><div class="panel-heading"><div class="heading-icon gold">✧</div><div><small data-i18n="activeQuest">JORNADA ATIVA</small><h2 id="quest-title">Um pedido na penumbra</h2></div><span class="quest-tag" id="quest-state">NOVA</span></div><p id="quest-description">Encontre a anciã Maera junto à estrada e ajude a proteger a aldeia.</p><div class="quest-progress" id="quest-progress"><span>◇</span><span data-i18n="talkToMaera">Fale com Maera na aldeia</span></div><div class="quest-reward"><span data-i18n="reward">RECOMPENSA</span><b>35 <span>◉</span> · 80 XP · Machado gasto</b></div></article>
+          <article class="panel inventory-panel"><div class="panel-heading compact"><div><small data-i18n="backpack">MOCHILA</small><h2><span id="inventory-weight">0 / 20</span> <em data-i18n="weight">de carga</em></h2></div><button id="inventory-toggle" class="text-button" data-i18n="details">DETALHES ↗</button></div><div class="capacity-track"><i id="capacity-fill"></i></div><div class="resource-list" id="resource-list"></div></article>
+        </section>
+        <footer class="world-footer"><span><b>✦</b> <span data-i18n="worldTip">A névoa guarda caminhos que o mapa ainda não conhece.</span></span><span>VALDORA <i>·</i> v0.1.0</span></footer>
+      </div>
+      <aside class="sidebar">
+        <div class="tabbar" role="tablist"><button class="tab active" data-tab="craft"><span>⚒</span><b data-i18n="craft">OFÍCIO</b></button><button class="tab" data-tab="skills"><span>✧</span><b data-i18n="skills">TALENTOS</b></button><button class="tab" data-tab="journal"><span>▤</span><b data-i18n="journal">DIÁRIO</b></button></div>
+        <div id="tab-content" class="tab-content"></div>
+        <div class="side-bottom"><div class="equipment"><div class="equipment-head"><small data-i18n="equipment">EQUIPAMENTO</small><span class="power">⚔ <b id="power-stat">4</b></span></div><div class="equip-slots"><div class="equip-slot"><span>⚔</span><small data-i18n="weapon">ARMA</small><b id="weapon-name">Faca de pedra</b></div><div class="equip-slot"><span>⛨</span><small data-i18n="armor">ARMADURA</small><b id="armor-name">Trajes gastos</b></div></div></div><button id="interact-button" class="interact-button"><span>✧</span><span data-i18n="nearby">INTERAÇÃO PRÓXIMA</span><b id="nearby-label">Explorar a floresta</b><i>↗</i></button></div>
+      </aside>
+    </section>
+  </main>
+  <div id="modal-root"></div>
+  <script src="game.js"></script>
+</body>
+</html>
